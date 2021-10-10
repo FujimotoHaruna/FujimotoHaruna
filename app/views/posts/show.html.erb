@@ -1,0 +1,53 @@
+<h1>Petite</h1>
+<h2>投稿詳細</h2>
+
+<div class="post">
+  <p><%= @post.user.email %></p>
+  <h3><%= @post.content %></h3>
+  <p><%= @post.created_at %></p>
+
+<% if user_signed_in? %>
+    <% if current_user.already_favorited?(@post) %>
+        <%= link_to post_favorite_path(@post), method: :delete do %>
+          <i class="fas fa-heart"></i><%= @post.favorites.count %>
+        <% end %>
+    <% else %>
+        <%= link_to post_favorites_path(@post), method: :post do %>
+          <i class="far fa-heart"></i><%= @post.favorites.count %>
+        <% end %>
+    <% end %>
+<% else %>
+    <i class="far fa-heart"></i><%= @post.favorites.count %>
+<% end %>
+
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @post.favorited_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<div class="response-wrapper">
+  <p>コメント一覧</p>
+  <% @responses.each do |r| %>
+    <div>
+      <%= r.user.email unless r.user.blank? %>
+      <br>
+      <%= r.content %>
+      <%= link_to "削除する", post_response_path(r.post.id, r.id), method: :delete %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@post, @response], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-responses"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "編集する", edit_post_path(@post.id) %>
+<%= link_to "投稿一覧に戻る", posts_path %>

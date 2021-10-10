@@ -4,12 +4,19 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'hello/index' => 'hello#index'
-  get 'hello/link' => 'hello#link'
+  get 'hello/top' => 'hello#top'
+  get 'tweets/top' => 'tweets#top'
+
   resources :tweets do
-  resources :likes, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
-  get 'posts/index' => 'posts#index'
+  
+  resources :posts do
+    resources :favorites, only: [:create, :destroy]
+    resources :responses, only: [:create, :destroy]
+  end
+  
   root 'hello#index'
 
 end

@@ -1,3 +1,60 @@
 // Place all the styles related to the tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.wrapper {
+    display: flex;
+}
+
+.top1{
+   a{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%) 
+   }
+   width: 120vh; 
+   height: 100vh;
+   background-color: coral;
+}
+
+.top2{
+    a{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translate(-50%, -50%) 
+   }
+    width: 120vh; 
+    height: 100vh; 
+    background-color: cornflowerblue;  
+}
+
+.header{
+    height: 50px;
+    color: white;
+    background-color: pink;
+    text-align:center;
+}
+
+.list{
+    text-align:center;  
+}
+
+.header-list2{
+    text-align:right;
+    margin-right: 20px;
+}
+
+.wrapper2 {
+    display: flex;
+}
+
+
+
+.tweets-container{
+    text-align:left;
+    margin-left: 40px;
+}
