@@ -8,7 +8,10 @@ class PostsController < ApplicationController
           else
             #部分検索
             @posts = Post.where("content LIKE ? ",'%' + params[:search] + '%')
-        end   
+        end
+        
+        @post = Post.new
+        
     end  
 
     def new
@@ -31,6 +34,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         @responses = @post.responses
         @response = Response.new
+        @post = Post.find(params[:id])
     end
 
     def edit

@@ -1,45 +1,108 @@
-<h1>Petite</h1>
-<h3>投稿一覧</h3>
-<%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<div id="header">
+  <div class="title3">
+    <h1>Review</h1>
 
-<h3>投稿を検索</h3>
- <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-   <%= text_field_tag :search %>
-   <%= submit_tag '検索する'  %>
-<% end %>
+    <div class="research2">
+      <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '🔎'  %>
+      <% end %>
+    </div>
 
-<%= link_to "新規投稿へ", posts_path %>
-<% if user_signed_in? %>
-<%= link_to "マイページへ", user_path(current_user.id) %>　
-<% end %>
+    <div class="postb">
+      <button type="button" class="new_post_button btn btn-light" data-toggle="modal" data-target="#exampleModal">
+        <h6 class="name_post"x>New Post<h6>
+      </button>
+    </div>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">新規投稿</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= form_for @post do |f| %>
+              <div class="field">
+                <%= f.label :content %>
+                <%= f.text_field :content, :size => 50 %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :picture %>
+                <%= f.file_field :picture %>
+              </div>
+
+              <div class="pb">
+              <button type="button" class="btn btn-light"><%= f.submit "投稿" %></button>
+              </div>
+
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-<div class="posts-container">
-  <% @posts.each do |p| %>
-    <div class="post">
-      <%= p.user.email %>
-      <%= image_tag p.picture_url, size: "250x200" if p.picture? %>
-      <%= p.content %>
 
-     <% if user_signed_in? %>
-       <% if current_user.already_favorited?(p) %>
-          <%= link_to post_favorite_path(id: p.id, post_id: p.id), method: :delete do %>
-            <i class="fas fa-heart"></i><%= p.favorites.count %>
-          <% end %>
-       <% else %>
-          <%= link_to post_favorites_path(id: p.id, post_id: p.id), method: :post do %>
+
+
+
+    <div class="btn-group2" role="group">
+      <button type="button" class="new_post_button btn btn-light"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Home
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+        <a class="dropdown-item" href="#"><%= link_to "Question",tweets_path %></a>
+        <a class="dropdown-item" href="#"><%= link_to "My page", user_path(current_user.id) %></a>
+        <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper3">
+ 
+  <div class="container">
+    <div class="row">
+      <% @posts.each do |p| %>
+        <div class="col-sm-4">
+          <div class="post">
+            <%= image_tag p.picture_url, size: "250×200" if p.picture? %>
+            <br>
+            <a href="/users/<%= p.user.id %>"><%= p.user.name %></a>
+            <br>
+            <%= p.content %>
+
+          <% if user_signed_in? %>
+            <% if current_user.already_favorited?(p) %>
+                <%= link_to post_favorite_path(id: p.id, post_id: p.id), method: :delete do %>
+                  <i class="fas fa-heart"></i><%= p.favorites.count %>
+                <% end %>
+            <% else %>
+                <%= link_to post_favorites_path(id: p.id, post_id: p.id), method: :post do %>
+                  <i class="far fa-heart"></i><%= p.favorites.count %>
+                <% end %>
+            <% end %>
+          <% else %>
             <i class="far fa-heart"></i><%= p.favorites.count %>
           <% end %>
-       <% end %>
-    <% else %>
-      <i class="far fa-heart"></i><%= p.favorites.count %>
-    <% end %>
-
-      <%= p.created_at %>
-      <%= link_to "詳細へ", post_path(p.id) %>
-      <%= link_to "編集する", edit_post_path(p.id) %>
-      <%= button_to "削除する", post_path(p.id), method: :delete %>
-      
+          <br>
+            <%= p.created_at %>
+            <br>
+            <button type="button" class="btn btn-light"><%= link_to "コメント", post_path(p.id) %></button>
+            
+            <button type="button" class="btn btn-light"><%= link_to "削除", post_path(p.id), method: :delete %></button>
+            
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  
 </div>

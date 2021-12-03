@@ -1,3 +1,161 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.header-5{
+    background-color: rgba(255,182,185,1);
+    font-family: 'Caveat', cursive;
+    height: 50px;
+    color: white;
+    
+}
+
+
+
+.btn-group3{
+    margin-left: 95vh;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.wrapper4{
+    font-family: 'Caveat', cursive;
+    display: flex;
+    background-color: ivory;
+    
+}
+
+
+
+.container3{
+    width: 200vh;
+    margin-left: 60px;
+}
+
+.contents3{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    background-color: rgba(187,222,214,1);
+    width: 50vh;
+    height: auto;
+    
+    
+}
+
+.topga{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.container4{
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.mypage{
+    display: flex;
+    width: 80vh;
+    height: auto;
+    margin-top: 30px;
+    background-color: rgba(250,227,217,1);
+    margin-top: 20px;
+}
+
+
+
+.syousai{
+   margin-left: 20px;
+   margin-top: 20px;
+   font-size: small;
+}
+
+
+.row2{
+    display: flex;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.row3{
+    display: flex;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.wrapper6{
+    display: flex;
+}
+
+.login{
+    font-family: 'Caveat', cursive;
+    
+    color:white;
+    background-color: rgba(187,222,214,1) ;
+    width: 110vh;
+    height: 100vh;
+    text-align: center;
+    
+}
+
+.field{
+    font-family: 'Caveat', cursive;
+    color: white;
+    margin-left: 2px;
+}
+
+.touroku{
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.box2{
+    background-image: image-url("75454107_576780179773985_3902391313656764589_n.jpg");
+    background-repeat: no-repeat;
+    width: 150vh;
+    height: auto;
+}
+
+.col-sm-4{
+    margin-top: 20px;
+}
+
+.signin{
+    background-color:rgba(187,222,214,1) ;
+    color: white;
+    text-align: center;
+    width: 110vh;
+    height: 100vh;
+}
+
+
+
+.box4{
+    background-image: image-url("70135309_781480072271989_2511080986892336538_n.jpg");
+    background-repeat: no-repeat;
+    width: 150vh;
+    height: auto;
+}
+
+.wrapper8{
+    background-image: image-url("haikei4.jpg"); 
+    background-size:contain;
+    width: 210vh;
+    height: auto;
+}
+
+.hensyuu{
+    font-family: 'Caveat', cursive;
+    background-color: ivory;
+    width: 80vh;
+    height: 100vh;
+    display: block;
+    margin-left: 60vh;
+    margin-right: 60vh; 
+    text-align: center;
+}
+
+.row4{
+    display: flex;
+}
+
+
+
+
+

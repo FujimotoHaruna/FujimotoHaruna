@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'hello/index' => 'hello#index'
   get 'hello/top' => 'hello#top'
   get 'tweets/top' => 'tweets#top'
+ 
 
   resources :tweets do
     resources :likes, only: [:create, :destroy]

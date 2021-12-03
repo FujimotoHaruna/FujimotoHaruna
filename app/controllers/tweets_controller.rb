@@ -10,7 +10,8 @@ class TweetsController < ApplicationController
      else   
       @tweets = Tweet.where("body LIKE ? ",'%' + params[:search] + '%')
      end
-
+      @tweet = Tweet.new
+      
     end
 
    def new
@@ -31,6 +32,7 @@ class TweetsController < ApplicationController
      @tweet = Tweet.find(params[:id])
      @comments = @tweet.comments
      @comment = Comment.new
+     @tweet = Tweet.find(params[:id])
    end
 
    def edit
@@ -47,9 +49,9 @@ class TweetsController < ApplicationController
    end
     
    def destroy
-     tweet = Tweet.find(params[:id])
-     tweet.destroy
-     edirect_to action: :index
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to action: :index
    end
 
    def top

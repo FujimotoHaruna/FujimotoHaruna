@@ -1,3 +1,110 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.title3{
+    font-family: 'Caveat', cursive;
+    margin-left: 700px;
+    display: flex;
+}
+
+.btn-group2{
+    margin-left: 20px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.header-list3{
+    margin-top: 20px;
+    margin-left: 450px;
+}
+
+.research2{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 45vh;
+}
+
+.postb{
+    height: 10px;
+    margin-left: 20px;
+    margin-top: 6px;
+}
+
+.name_post{
+    margin-top: 4px;
+    height: 10px;
+}
+
+.modal-title{
+    color:black;
+    margin-left: 25vh;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    
+}
+ 
+.modal-header{
+    background-color:ivory;
+    height: 55px;
+}
+ 
+.pb{
+    margin-left: 53vh;
+}
+
+.field{
+    margin-left: 45px;
+    color: black;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.post{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.wrapper3{
+    background-image:image-url("haikei3.jpg");
+    height: auto;
+}
+
+
+
+
+
+
+
+
+.newpost{
+    background-color: rgba(250,227,217,1);
+    text-align: center;
+}
+
+
+.wrapper7{
+    background-image:image-url("haikei2.jpg");
+    background-size:contain;
+    
+    height: auto;
+
+}
+
+.detail2{
+    background-color: ivory;
+    width: 60vh;
+    height: auto;
+    display: block;
+    margin-left: 80vh;
+    margin-right: 60vh; 
+      
+}
+
+.iine2{
+    text-align: center;
+}
+
+.response-wrapper{
+    text-align: center;
+}

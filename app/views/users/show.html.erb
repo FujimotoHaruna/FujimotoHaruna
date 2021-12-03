@@ -1,24 +1,116 @@
-<h1>users#show</h1>
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
+<div class="header-5">
+  <div class="title2">
+    <h1>My page</h1>
 
-<% if current_user.id == @user.id %>
-  <%= link_to "編集する", edit_user_registration_path %>
-<% end %>
+    <div class="btn-group3" role="group">
+      <button type="button" class="new_post_button btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Home
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#"><%= link_to "Question",tweets_path %></a>
+        <a class="dropdown-item" href="#"><%= link_to "Review", posts_path(current_user.id) %></a>
+        <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></a>
+      </div>
+    </div>
 
-<h2>ユーザーの投稿一覧</h2>
-<% @user.tweets.each do |t| %>
-  <%= t.user.name %>
-  <%= t.body %>
-<% end %>
+  </div>
+</div>
 
-<!-- 以下はいいね機能を実装している場合-->
-<h2>ユーザーがいいねした投稿一覧</h2>
-<% @user.liked_tweets.each do |t| %>
-  <%= t.user.name %>
-  <%= t.body %>
-<% end %>
-<!-- ここまで-->
 
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+<div class="wrapper4">
+
+  <nav class="contents3">
+    <div class="topga">
+    <%= image_tag @user.portrait_url, size: "250×200" if @user.portrait? %>
+    </div>
+    <br>
+    <div class="syousai">
+      <p>Name : <%= @user.name %></p>
+      <p>E.mail : <%= @user.email %></p>
+      <p>Profile : <%= @user.profile %>おなかすいた</p>
+      <% if current_user.id == @user.id %>
+        <%= link_to "編集", edit_user_registration_path %>
+      <% end %>
+    </div>
+  </nav>
+  
+  <div class="container3">
+
+   
+   
+   <div class="container4">
+      <br>
+      <h6>あなたの投稿</h6>
+      <div class="QA">
+        <h2>Question</h2>
+        <div class="row">
+          <% @user.tweets.each do |t| %>
+            <div class="col-sm-4">
+              <%= image_tag t.image_url, size: "250×200" if t.image? %>
+              <br>
+              <%= t.user.name %>
+              <%= t.body %>
+              <br>
+              <%= t.created_at %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <div class="RVW">
+        <h3>Review</h3>
+        <div class="row2">
+          <% @user.posts.each do |p| %>
+            <div class="col-sm-4">
+              <%= image_tag p.picture_url, size: "250×200" if p.picture? %>
+              <br>
+              <%= p.user.name %>
+              <%= p.content %>
+              <br>
+              <%= p.created_at %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="okiniiri">
+        <h2>あなたがいいねした投稿</h2>
+        <br>
+        <h4>Question</h4>
+        <div class="row3">
+          <% @user.liked_tweets.each do |t| %>
+            <div class="col-sm-4">
+              <%= image_tag t.image_url, size: "250×200" if t.image? %>
+              <br>
+              <%= t.user.name %>
+              <%= t.body %>
+              <br>
+              <%= t.created_at %>
+            </div>
+          <% end %>
+          
+        </div>
+        <br>
+        <h5>Review</h5>
+        <div class="row4">
+          <% @user.favorited_posts.each do |p| %>
+            <div class="col-sm-4">
+              <%= image_tag p.picture_url, size: "250×200" if p.picture? %>
+              <br>
+              <a href="/users/<%= p.user.id %>"><%= p.user.name %></a>
+              <%= p.content %>
+              <br>
+              <%= p.created_at %>
+            </div>
+          <% end %>
+
+        </div>
+
+      </div>
+      
+    </div>
+    
+  </div>
+
+</div>

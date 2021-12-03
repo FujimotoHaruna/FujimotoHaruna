@@ -1,54 +1,107 @@
-<h1>Petite</h1>
-<h2>Tweet詳細</h2>
 
-<div class="tweet">
-  <p><%= @tweet.user.email %></p>
-  <h3><%= @tweet.body %></h3>
-  <p><%= @tweet.created_at %></p>
 
-<% if user_signed_in? %>
-    <% if current_user.already_liked?(@tweet) %>
-        <%= link_to tweet_like_path(@tweet), method: :delete do %>
-          <i class="fas fa-heart"></i><%= @tweet.likes.count %>
-        <% end %>
-    <% else %>
-        <%= link_to tweet_likes_path(@tweet), method: :post do %>
-          <i class="far fa-heart"></i><%= @tweet.likes.count %>
-        <% end %>
-    <% end %>
-<% else %>
-    <i class="far fa-heart"></i><%= @tweet.likes.count %>
-<% end %>
+<div class="wrapper5">
 
-</div>
-
-<h2>いいねしたユーザー</h2>
-<% @tweet.liked_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-
-<div class="comment-wrapper">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.email unless c.user.blank? %>
-      <br>
-      <%= c.content %>
-      <%= link_to "削除する", tweet_comment_path(c.tweet.id, c.id), method: :delete %>
-    </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-comments"></i> コメントする
+  
+  <div class="detail">
+    <br>
+    <div class="tweet">
+      <p><%= @tweet.user.name %></p>
+      <h3><%= @tweet.body %></h3>
+      <p><%= @tweet.created_at %></p>
+      <% if user_signed_in? && current_user.id == @tweet.user_id %>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+        編集
+      </button>
       <% end %>
-    <% end %>
-  <% end %>
+   
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">編集</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form_for @tweet do |f| %>
+                <%= f.label :body %>
+                <%= f.text_field :body, :size => 40 %> 
+                <%= f.submit "編集" %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <% if user_signed_in? %>
+          <% if current_user.already_liked?(@tweet) %>
+              <%= link_to tweet_like_path(@tweet), method: :delete do %>
+                <i class="fas fa-heart"></i><%= @tweet.likes.count %>
+              <% end %>
+          <% else %>
+              <%= link_to tweet_likes_path(@tweet), method: :post do %>
+                <i class="far fa-heart"></i><%= @tweet.likes.count %>
+              <% end %>
+          <% end %>
+      <% else %>
+          <i class="far fa-heart"></i><%= @tweet.likes.count %>
+      <% end %>
+
+    </div>
+    <br>
+    <div class="iine">
+      <h2>いいねしたユーザー</h2>
+      <% @tweet.liked_users.each do |user| %>
+        <li><%= user.name %></li>
+      <% end %>
+    </div>
+    <br>
+    <div class="comment-wrapper">
+
+      
+
+      <p>コメント一覧</p>
+      <% @comments.each do |c| %>
+        <div>
+          <%= c.user.name unless c.user.blank? %>
+          <br>
+          <%= image_tag c.photo_url, size: "250x200" if c.photo? %>
+          <br>
+          <%= c.content %>
+          <%= link_to "削除", tweet_comment_path(c.tweet.id, c.id), method: :delete %>
+        </div>
+          <br>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+          <%= f.text_area :content %>
+          <br> 
+          <%= f.label :photo %>
+          <%= f.file_field :photo %>
+          <%= button_tag type: "submit" do %>
+            <i class="far fa-comments"></i> コメントする
+          <% end %>
+        <% end %>
+      <% end %>
+      <br>
+      <br>
+      <%= link_to "投稿一覧", tweets_path %>
+      <br>
+      
+
+    </div>
+  </div>
+
+  
+
 </div>
-
-
-<%= link_to "編集する", edit_tweet_path(@tweet.id) %>
-<%= link_to "Tweet一覧に戻る", tweets_path %>

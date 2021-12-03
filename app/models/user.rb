@@ -25,4 +25,6 @@ class User < ApplicationRecord
     self.favorites.exists?(post_id: post.id)
   end
 
+  mount_uploader :portrait, ImageUploader
+
 end

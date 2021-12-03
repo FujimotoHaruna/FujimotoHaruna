@@ -3,26 +3,153 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .title{
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
   margin-left: 700px;
   display: flex;
 }
 
 .header-list{
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 600px;
+  color: lightslategrey;
+  font-size: 25px;
+ 
 }
 
-a {
-  color:black;
+a{
+  color: lightslategrey;
+ 
   
+}
+
+
+
+.wrapper9{
+  display: flex;
 }
 
 .box{
+  width: 100vh;
+  height: 100vh;
+  background-image: image-url("137539065_1336784593341499_5376287070132761062_n.jpeg");
+  background-position:left;
+  background-size:contain;
+  background-repeat: no-repeat;
   
+}
+
+.serihu{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  width: 100vh;
+  text-align: center;
+  margin-top: 40vh;
+  
+}
+
+
+.ABOUT{
+  background-color: rgba(187,222,214,1);
+  height: 50px;
+  color: white;
+  font-family: 'Caveat', cursive;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.about{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  width: 210vh;
+  height: 35vh;
+  background-color: ivory;
+  text-align: center;
+  color:lightslategrey;
+  
+}
+
+
+
+.box5{
+  background-image: image-url("situmonside1.jpg");
+  width: 210vh;
   height: 80vh;
-  background-image: image-url("Gutschein-Karte.png");
-  
-  background-position:center center;                     
+  background-position:center;
   background-size:contain;
 
+}
+
+.wrapper9{
+  display: flex;
+}
+
+
+
+.border-radius1{
+  background-color: ivory;
+  width: 60vh;
+  height: 60vh;
+  line-height: 200px;
+  border-radius: 50%;
+  margin-left: 35vh;
+  margin-top: 10vh;
+  
+}
+
+.border-radius2{
+  background-color: ivory;
+  width: 60vh;
+  height: 60vh;
+  line-height: 200px;
+  border-radius: 50%;
+  margin-left: 20vh;
+  margin-top: 10vh;
+ 
+}
+
+.qp{
+  width: 50vh;
+  height: 50vh;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 45px;
+  margin-top: 45px;
+  color: lightslategrey;
+ 
+}
+
+.qt{
+  font-family: 'Caveat', cursive;
+  font-size: xx-large;
+  margin-right: 10px;
+}
+
+.qd{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1rem;
+  margin-top: 15px;
+ 
+}
+
+.rp{
+  width: 50vh;
+  height: 50vh;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 45px;
+  margin-top: 45px;
+  color: lightslategrey;
+ 
+ 
+}
+
+.rt{
+  font-family: 'Caveat', cursive;
+  font-size: xx-large;
+  margin-right: 10px;
+}
+
+.rd{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 1rem;
+ 
 }

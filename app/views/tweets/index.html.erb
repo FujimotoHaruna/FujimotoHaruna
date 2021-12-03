@@ -1,57 +1,108 @@
-<div class="header">
-  <h1>Petite</h1>
-  <div class="header-list2">
-    <%= link_to "My page", user_path(current_user.id) %>　
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  </div>
-</div>
+<div class="header-2">
+  <div class="title2">
+    <h1>Question</h1>
 
-<div class="list">
-<h3>質問一覧</h3>
-</div>
+    <div class="research">
+      <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '🔎'  %>
+      <% end %>
+    </div>
+    
+    <div class="tweetb">
+      <button type="button" class="new_post_button btn btn-light" data-toggle="modal" data-target="#exampleModal">
+        <h6 class="name_post"x>New Post<h6>
+      </button>
+    </div>
 
-<div class="wrapper2">
- <nav class="research">
-    <h3>投稿を検索</h3>
-    <%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
-      <%= text_field_tag :search %>
-      <%= submit_tag '検索する'  %>
-    <% end %>
-  </nav>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">新規投稿</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= form_for @tweet do |f| %>
+              <div class="field">
+                <%= f.label :body %>
+                <%= f.text_field :body, :size => 40 %>
+              </div>
+              <br>
+              <div class="field">
+                <%= f.label :image %>
+                <%= f.file_field :image %>
+              </div>
 
-  <div class="tweets-container">
+              <div class="tb">
+              <button type="button" class="btn btn-light"><%= f.submit "投稿" %></button>
+              </div>
 
-    <%= link_to "新規投稿へ", new_tweet_path %>
-    <% if user_signed_in? %>
-    <% end %>
-
-    <% @tweets.each do |t| %>
-      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
-      <div class="tweet">
-        <%= t.user.email %>
-        <%= image_tag t.image_url, size: "250x200" if t.image? %>
-        <%= t.body %>
-
-        <% if user_signed_in? %>
-          <% if current_user.already_liked?(t) %>
-            <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
-              <i class="fas fa-heart"></i><%= t.likes.count %>
             <% end %>
-          <% else %>
-            <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="btn-group" role="group">
+      <button type="button" class="new_post_button btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Home
+      </button>
+      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <a class="dropdown-item" href="#"><%= link_to "Review",posts_path %></a>
+        <a class="dropdown-item" href="#"><%= link_to "My page", user_path(current_user.id) %></a>
+        <a class="dropdown-item" href="#"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></a>
+      </div>
+    </div>
+    
+  </div>
+
+
+</div>
+
+
+ 
+<div class="wrapper2">
+ 
+  <div class="container">
+    <div class="row">
+      <% @tweets.each do |t| %>
+        <div class="col-sm-4">
+          <div class="tweet">
+            <%= image_tag t.image_url, size: "250×200" if t.image? %>
+            <br>
+            <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>
+            <br>
+            <%= t.body %>
+
+            <% if user_signed_in? %>
+              <% if current_user.already_liked?(t) %>
+                <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), method: :delete do %>
+                  <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+              <% else %>
+                <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), method: :post do %>
+                  <i class="far fa-heart"></i><%= t.likes.count %>
+                <% end %>
+              <% end %>
+            <% else %>
               <i class="far fa-heart"></i><%= t.likes.count %>
             <% end %>
-          <% end %>
-        <% else %>
-          <i class="far fa-heart"></i><%= t.likes.count %>
-        <% end %>
-    
-        <%= t.created_at %>
-        <%= link_to "詳細へ", tweet_path(t.id) %>
-        <%= link_to "編集する", edit_tweet_path(t.id) %>
-        <%= button_to "削除する", tweet_path(t.id), method: :delete %>
-        
-      </div>
-    <% end %>
+            <br>
+            <%= t.created_at %>
+            <br>
+            <button type="button" class="btn btn-light"><%= link_to "コメント", tweet_path(t.id) %></button>
+            
+            <button type="button" class="btn btn-light"><%= link_to "削除", tweet_path(t.id), method: :delete %></button>
+            
+          </div>  
+        </div>
+      <% end %>
+    </div>
   </div>
+ 
 </div>
+

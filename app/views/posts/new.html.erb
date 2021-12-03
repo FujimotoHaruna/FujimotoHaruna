@@ -1,16 +1,23 @@
-<h1>Petite</h1>
-<h3>新規投稿</h3>
-<%= form_for @post do |f| %>
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_field :content, :size => 140 %>
+<div id="header">
+  <div class="title2">
+  <h3>新規投稿</h3>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :picture %>
-    <%= f.file_field :picture %>
-  </div>
+<div class="newpost">
+  <%= form_for @post do |f| %>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_field :content, :size => 140 %>
+    </div>
 
-  <%= f.submit "投稿する" %>
-<% end %>
-<%= link_to "投稿一覧に戻る", posts_path %>
+    <div class="field">
+      <%= f.label :picture %>
+      <%= f.file_field :picture %>
+    </div>
+
+    <button type="button" class="btn btn-light"><%= f.submit "投稿" %></button>
+  <% end %>
+  <%= link_to "投稿一覧", posts_path %>
+</div>
+

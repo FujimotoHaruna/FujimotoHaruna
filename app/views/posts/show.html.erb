@@ -1,53 +1,95 @@
-<h1>Petite</h1>
-<h2>投稿詳細</h2>
-
-<div class="post">
-  <p><%= @post.user.email %></p>
-  <h3><%= @post.content %></h3>
-  <p><%= @post.created_at %></p>
-
-<% if user_signed_in? %>
-    <% if current_user.already_favorited?(@post) %>
-        <%= link_to post_favorite_path(@post), method: :delete do %>
-          <i class="fas fa-heart"></i><%= @post.favorites.count %>
+<div class="wrapper7">
+  <div class="detail2">
+    <br>
+    <div class="post">
+        <p><%= @post.user.name %></p>
+        <h3><%= @post.content %></h3>
+        <p><%= @post.created_at %></p>
+        <% if user_signed_in? && current_user.id == @post.user_id %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal">
+          編集
+        </button>
         <% end %>
-    <% else %>
-        <%= link_to post_favorites_path(@post), method: :post do %>
+           
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">編集</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              <%= form_for @post do |f| %>
+                <%= f.label :content %>
+                <%= f.text_field :content, :size => 40 %> 
+                <%= f.submit "編集" %>
+              <% end %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+      <% if user_signed_in? %>
+          <% if current_user.already_favorited?(@post) %>
+              <%= link_to post_favorite_path(@post), method: :delete do %>
+                <i class="fas fa-heart"></i><%= @post.favorites.count %>
+              <% end %>
+          <% else %>
+              <%= link_to post_favorites_path(@post), method: :post do %>
+                <i class="far fa-heart"></i><%= @post.favorites.count %>
+              <% end %>
+          <% end %>
+      <% else %>
           <i class="far fa-heart"></i><%= @post.favorites.count %>
-        <% end %>
-    <% end %>
-<% else %>
-    <i class="far fa-heart"></i><%= @post.favorites.count %>
-<% end %>
-
-</div>
-
-<h2>いいねしたユーザー</h2>
-<% @post.favorited_users.each do |user| %>
-  <li><%= user.email %></li>
-<% end %>
-
-<div class="response-wrapper">
-  <p>コメント一覧</p>
-  <% @responses.each do |r| %>
-    <div>
-      <%= r.user.email unless r.user.blank? %>
-      <br>
-      <%= r.content %>
-      <%= link_to "削除する", post_response_path(r.post.id, r.id), method: :delete %>
-    </div>
-      <br>
-  <% end %>
-
-  <% if user_signed_in? %>
-    <%= form_with(model: [@post, @response], local: true) do |f| %>
-      <%= f.text_area :content %>
-      <%= button_tag type: "submit" do %>
-        <i class="far fa-responses"></i> コメントする
       <% end %>
-    <% end %>
-  <% end %>
-</div>
 
-<%= link_to "編集する", edit_post_path(@post.id) %>
-<%= link_to "投稿一覧に戻る", posts_path %>
+    </div>
+    <br>
+    <div class="iine2">
+      <h2>いいねしたユーザー</h2>
+      <% @post.favorited_users.each do |user| %>
+        <li><%= user.name %></li>
+      <% end %>
+    </div>
+    <br>
+    <div class="response-wrapper">
+      <p>コメント一覧</p>
+      <% @responses.each do |r| %>
+        <div>
+          <%= r.user.name unless r.user.blank? %>
+          <br>
+          <%= r.content %>
+          <%= link_to "削除", post_response_path(r.post.id, r.id), method: :delete %>
+        </div>
+          <br>
+      <% end %>
+
+      <% if user_signed_in? %>
+        <%= form_with(model: [@post, @response], local: true) do |f| %>
+          <%= f.text_area :content %>
+          <%= button_tag type: "submit" do %>
+            <i class="far fa-responses"></i> コメントする
+          <% end %>
+          <br>
+          
+        <% end %>
+      <% end %>
+      <br>
+      <br>
+      <%= link_to "投稿一覧", posts_path %>
+    </div>
+    <br>
+    
+  </div>
+
+</div>

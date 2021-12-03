@@ -1,16 +1,24 @@
-<h1>Petite</h1>
-<h3>新規Tweet</h3>
-<%= form_for @tweet do |f| %>
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_field :body, :size => 140 %>
+<div class="header-3">
+  <div class="title2">
+  <h3>新規投稿</h3>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
+<div class="newtweet">
+ 
+  <%= form_for @tweet do |f| %>
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_field :body, :size => 140 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+    
+    <button type="button" class="btn btn-light"><%= f.submit "投稿" %></button>
+  <% end %>
+  <%= link_to "投稿一覧", tweets_path %>
   
-  <%= f.submit "Tweetする",class:"btn btn-info" %>
-<% end %>
-<%= link_to "Tweet一覧に戻る", tweets_path %>
+</div>

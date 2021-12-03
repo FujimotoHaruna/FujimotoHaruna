@@ -2,59 +2,201 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.wrapper {
+.header-2{
+    background-color: rgba(138,198,209,1);
+    font-family: 'Caveat', cursive;
+    height: 50px;
+    color: white;
+    
+    
+    
+}
+
+.btn-group{
+    margin-left: 20px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.dropdown-menu{
+    font-family: 'Caveat', cursive;
+}
+
+.tweetb{
+    height: 10px;
+    margin-left: 20px;
+    margin-top: 6px;
+    
+}
+
+.name_post{
+    margin-top: 4px;
+    height: 10px;
+}
+
+.modal-title{
+   color:black;
+   margin-left: 25vh;
+   font-family: 'Zen Maru Gothic', sans-serif;
+   
+}
+
+.modal-header{
+    background-color:ivory;
+    height: 55px;
+}
+
+.field{
+    color: black;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.tb{
+   margin-left: 53vh;
+}
+
+
+
+
+
+.wrapper{
     display: flex;
 }
 
 .top1{
    a{
-    margin: 0;
+    font-size:40px ;
+    font-family: 'Caveat', cursive;
     position: absolute;
     top: 50%;
-    left: 25%;
+    left: 23%;
     transform: translate(-50%, -50%) 
    }
    width: 120vh; 
    height: 100vh;
-   background-color: coral;
+   background-image:image-url("94517180_1341967149525275_4225389602148728120_n.jpg");
 }
 
 .top2{
     a{
+    font-size:40px ;
+    font-family: 'Caveat', cursive;
     margin: 0;
     position: absolute;
     top: 50%;
-    right: 25%;
+    right: 17%;
     transform: translate(-50%, -50%) 
    }
     width: 120vh; 
     height: 100vh; 
-    background-color: cornflowerblue;  
+    background-image:image-url("119701614_336348850946084_7975043843251127442_n.jpg");  
 }
 
-.header{
-    height: 50px;
-    color: white;
-    background-color: pink;
-    text-align:center;
-}
 
-.list{
-    text-align:center;  
-}
 
-.header-list2{
-    text-align:right;
-    margin-right: 20px;
-}
-
-.wrapper2 {
+.title2{
+    margin-left: 650px;
     display: flex;
 }
 
 
-
-.tweets-container{
-    text-align:left;
-    margin-left: 40px;
+.research{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 47vh;
 }
+
+
+.row{
+    background-color: ivory;
+    font-family: 'Zen Maru Gothic', sans-serif;
+}
+.tweet{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.wrapper2{
+    background-image:image-url("haikei6.jpg");
+    height: auto;
+    
+}
+
+
+
+
+
+
+.link{
+    text-align: center;
+}
+
+.newtweet{
+    background-color: ivory;
+    text-align: center;
+}
+
+.header-3{
+    background-color: rgba(138,198,209,1);
+    font-family: 'Caveat', cursive;
+    height: 50px;
+    color: white;  
+}
+
+.header-4{
+    background-color: rgba(138,198,209,1);
+    font-family: 'Caveat', cursive;
+    height: 50px;
+    color: white;
+    text-align: center;
+}
+
+.iine{
+    font-family: 'Zen Maru Gothic', sans-serif;
+    text-align: center;
+}
+
+
+
+.wrapper5{
+    background-image:image-url("haikei1.jpg");
+    background-size:contain;
+    height: auto;
+    
+    
+
+}
+
+.detail{
+    background-color: ivory;
+    width: 60vh;
+    height: auto;
+    display: block;
+    margin-left: 80vh;
+    margin-right: 60vh; 
+    
+    
+      
+}
+
+.comment-wrapper{
+   font-family: 'Zen Maru Gothic', sans-serif;
+   text-align: center;
+    
+}
+
+.side5{
+    background-color: rgba(187,222,214,1);
+    width: 20vh;
+
+    
+}
+
+.side6{
+    background-color: rgba(187,222,214,1);
+    width: 20vh;
+   
+}
+
